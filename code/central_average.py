@@ -1,10 +1,11 @@
+  GNU nano 5.6.1                                                         central_average.py                                                                   
 import os
 import numpy as np
 from tensorflow.keras.models import load_model, Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 
 # Directory containing LSTM models from the LSTM VM
-lstm_models_directory = 'path_to_lstm_models'  # Path to the folder where the models from LSTM VM are saved
+lstm_models_directory = '/lstm_models/'  # Path to the folder where the models from LSTM VM are saved
 averaged_model_path = 'averaged_model/averaged_model.keras'  # Path to save the averaged model
 
 def average_models(model_list):
@@ -33,3 +34,4 @@ if model_list:
     print(f"Averaged model saved at {averaged_model_path}")
 else:
     print("No models found for averaging.")
+

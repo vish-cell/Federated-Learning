@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set paths for directories and SSH information
-LSTM_MODELS_DIR="/path/to/lstm_models"  # Directory where LSTM VM uploads models
-AVERAGED_MODEL_PATH="/path/to/averaged_model/averaged_model.keras"  # Path to save the averaged model
-LSTM_VM_IP="your_lstm_vm_ip_address"  # LSTM VM IP address
-LSTM_VM_USER="your_lstm_vm_user"  # Username for LSTM VM
-LSTM_VM_MODEL_PATH="/path/to/lstm_vm/averaged_model.keras"  # Path to send the averaged model to LSTM VM
+LSTM_MODELS_DIR="/lstm_models/"  # Directory where LSTM VM uploads models
+AVERAGED_MODEL_PATH="/averaged_model/"  # Path to save the averaged model
+LSTM_VM_IP="192.4.2.5"  # LSTM VM IP address
+LSTM_VM_USER="root"  # Username for LSTM VM
+LSTM_VM_MODEL_PATH="/updated/"  # Path to send the averaged model to LSTM VM
 
 # Monitor the LSTM models directory for new models
 inotifywait -m "$LSTM_MODELS_DIR" -e create -e moved_to |
@@ -20,8 +20,10 @@ while read path action file; do
 
         # Send the averaged model back to the LSTM VM
         echo "Sending averaged model to LSTM VM..."
-        scp "$AVERAGED_MODEL_PATH" "$LSTM_VM_USER@$LSTM_VM_IP:$LSTM_VM_MODEL_PATH"
+        scp "$/averaged_model" "$root@$192.2.4.5:$/lstm_models/"
 
         echo "Averaged model sent. Waiting for the next model..."
     fi
 done
+
+
